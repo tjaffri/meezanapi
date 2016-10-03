@@ -7,7 +7,7 @@
     "termsOfService": "http://meezanapi.azurewebsites.net/terms",
     "license": {
       "name": "MIT",
-      "url": "http://github.com/tjaffri/meezan-api/blob/master/LICENSE.txt"
+      "url": "http://github.com/tjaffri/meezanapi/blob/master/LICENSE.txt"
     }
   },
   "host": "meezanapi.azurewebsites.net",

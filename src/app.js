@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 /**
- * meezan-api
+ * meezanapi
  *
  * Copyright © 2016 Axis, the Information Professionals. All rights reserved.
  *
@@ -13,7 +13,7 @@ import config from './config.json';
 import server from './server';
 import http from 'http';
 
-const debug = require('debug')('meezan-api:app');
+const debug = require('debug')('meezanapi:app');
 
 /**
  * Create HTTP server.

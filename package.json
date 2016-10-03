@@ -1,5 +1,5 @@
 {
-  "name": "meezan-api",
+  "name": "meezanapi",
   "version": "0.0.1",
   "description": "Simple API that powers the Meezan app, website and modern agents.",
   "engines": {
@@ -7,10 +7,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjaffri/meezan-api.git"
+    "url": "git+https://github.com/tjaffri/meezanapi.git"
   },
   "bugs": {
-    "url": "https://github.com/tjaffri/meezan-api/issues"
+    "url": "https://github.com/tjaffri/meezanapi/issues"
   },
   "homepage": "http://meezanapi.azurewebsites.net",
   "author": "Axis, the Information Professionals.",

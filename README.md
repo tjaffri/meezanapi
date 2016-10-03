@@ -1,8 +1,8 @@
-# [meezan-api](https://github.com/tjaffri/meezan-api)
+# [meezanapi](https://github.com/tjaffri/meezanapi)
 
-[![Build Status](http://img.shields.io/travis/tjaffri/meezan-api/master.svg?style=flat-square)](https://travis-ci.org/tjaffri/meezan-api)
-[![Coverage Status](https://img.shields.io/coveralls/tjaffri/meezan-api.svg?style=flat-square)](https://coveralls.io/github/tjaffri/meezan-api)
-[![Dependency Status](http://img.shields.io/david/tjaffri/meezan-api.svg?style=flat-square)](https://david-dm.org/tjaffri/meezan-api)
+[![Build Status](http://img.shields.io/travis/tjaffri/meezanapi/master.svg?style=flat-square)](https://travis-ci.org/tjaffri/meezanapi)
+[![Coverage Status](https://img.shields.io/coveralls/tjaffri/meezanapi.svg?style=flat-square)](https://coveralls.io/github/tjaffri/meezanapi)
+[![Dependency Status](http://img.shields.io/david/tjaffri/meezanapi.svg?style=flat-square)](https://david-dm.org/tjaffri/meezanapi)
 
 > Simple API that powers the Meezan app, website and modern agents
 
@@ -28,8 +28,8 @@ First, set up your dev tools and node.js:
 Next, clone the repo and install dependencies.
 
 ```sh
-$ git clone https://github.com/tjaffri/meezan-api
-$ cd meezan-api
+$ git clone https://github.com/tjaffri/meezanapi
+$ cd meezanapi
 $ npm install
 ```
 

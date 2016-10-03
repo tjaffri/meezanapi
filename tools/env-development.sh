@@ -2,5 +2,5 @@
 
 NODE_ENV=development
 export NODE_ENV
-DEBUG=meezan-api:*
+DEBUG=meezanapi:*
 export DEBUG

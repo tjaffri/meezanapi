@@ -1,5 +1,5 @@
 /**
- * meezan-api
+ * meezanapi
  *
  * Copyright © 2016 Axis, the Information Professionals. All rights reserved.
  *

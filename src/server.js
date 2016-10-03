@@ -1,5 +1,5 @@
 /**
- * meezan-api
+ * meezanapi
  *
  * Copyright © 2016 Axis, the Information Professionals. All rights reserved.
  *
@@ -17,7 +17,7 @@ import routes from './routes/index';
 import chapters from './routes/chapters';
 import juz from './routes/juz';
 
-const debug = require('debug')('meezan-api:server');
+const debug = require('debug')('meezanapi:server');
 const server = express();
 
 // View engine setup
