@@ -75,7 +75,7 @@
     "chai": "^3.5.0",
     "coveralls": "^2.11.14",
     "del": "^2.2.0",
-    "dredd": "^2.1.0",
+    "dredd": "stable",
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-import": "^1.6.1",
