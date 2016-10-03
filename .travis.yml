@@ -1,0 +1,17 @@
+.sudo: false
+language: node_js
+node_js:
+  - '6'
+install:
+  - npm install
+script:
+  - npm run lint
+  - npm run build:release
+  - npm run test:cover
+after_success:
+  - npm run coveralls
+  - npm prune --production
+deploy:
+  provider: azure_web_apps
+  skip_cleanup: true
+

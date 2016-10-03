@@ -1,0 +1,34 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "installedESLint": true,
+  "rules": {
+    "strict": 0,
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-extra-boolean-cast": "off",
+    "no-console": "off",
+    "max-len": [
+      2,
+      110,
+      4,
+      {
+        "ignoreUrls": true
+      }
+    ],
+    "no-param-reassign": 0
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  }
+}

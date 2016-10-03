@@ -1,0 +1,213 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.8",
+    "title": "Meezan API",
+    "description": "Meezan is a simple and free Quran browser application, with integrations with modern agents. Its goals are to make the glorious Quran available in the emerging world of ambient computing. This API powers the Meezan client applications, Progressive Web App, as well as modern agents.",
+    "termsOfService": "http://meezanapi.azurewebsites.net/terms",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/tjaffri/meezan-api/blob/master/LICENSE.txt"
+    }
+  },
+  "host": "meezanapi.azurewebsites.net",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json; charset=utf-8"
+  ],
+  "paths": {
+    "/chapters": {
+      "get": {
+        "description": "Gets metadata for all chapters.",
+        "operationId": "getChapters",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All chapters metadata response.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AllChaptersMetadataResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/chapters/{chapter_id}": {
+      "get": {
+        "description": "Gets metadata for a single chapter.",
+        "operationId": "getChapter",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "x-example": 1,
+            "type": "number",
+            "format": "double",
+            "description": "ID of the Chapter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chapter metadata response.",
+            "schema": {
+              "$ref": "#/definitions/ChapterMetadataResponse"
+            }
+          }
+        }
+      }
+    },
+    "/chapters/{chapter_id}/details": {
+      "get": {
+        "description": "Gets metadata and details for a single chapter.",
+        "operationId": "getChapterDetails",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "x-example": 1,
+            "type": "number",
+            "format": "double",
+            "description": "ID of the Chapter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chapter details response.",
+            "schema": {
+              "$ref": "#/definitions/ChapterDetailsResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AllChaptersMetadataResponse": {
+      "title": "Metadata for all chapters response.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ayas": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ord": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "start",
+        "ayas",
+        "ord",
+        "name",
+        "type"
+      ]
+    },
+    "ChapterMetadataResponse": {
+      "title": "Metadata for single chapter response",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ayas": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ord": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "start",
+        "ayas",
+        "ord",
+        "name",
+        "type"
+      ]
+    },
+    "ChapterDetailsResponse": {
+      "title": "Details for single chapter response",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ayas": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ord": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string"
+        },
+        "verses": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "start",
+        "ayas",
+        "ord",
+        "name",
+        "type",
+        "verses"
+      ]
+    }
+  }
+}
