@@ -1,6 +1,6 @@
 {
   "name": "meezanapi",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple API that powers the Meezan app, website and modern agents.",
   "engines": {
     "node": "6.5.x"
