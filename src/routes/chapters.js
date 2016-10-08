@@ -52,7 +52,7 @@ router.get('/:chapterId', catchErrors(async (req, res) => {
   const chapters = await quran.chapters(chapterId);
 
   if (!chapters || !chapters.length) {
-    res.sendStatus(404);
+    return res.sendStatus(404);
   }
 
   // return the first chapter found that matches chapterId
@@ -82,7 +82,7 @@ router.get('/:chapterId/details', catchErrors(async (req, res) => {
   }
 
   // if we made it this far, 404
-  res.sendStatus(404);
+  return res.sendStatus(404);
 }));
 
 export default router;

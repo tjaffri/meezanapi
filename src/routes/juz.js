@@ -33,7 +33,7 @@ router.get('/:juzId', catchErrors(async (req, res) => {
   }
 
   // if we made it this far, 404
-  res.sendStatus(404);
+  return res.sendStatus(404);
 }));
 
 export default router;

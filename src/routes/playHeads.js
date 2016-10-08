@@ -21,7 +21,7 @@ router.get('/:userId', catchErrors(async (req, res) => {
   const playHeadForUser = db[userId];
   if (!playHeadForUser) {
     // not found
-    res.sendStatus(404);
+    return res.sendStatus(404);
   }
 
   return res.json(playHeadForUser);
