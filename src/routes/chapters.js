@@ -44,7 +44,7 @@ router.get('/', catchErrors(async (req, res) => {
   return res.json(chapters);
 }));
 
-router.get('/:chapterId', catchErrors(async (req, res, next) => {
+router.get('/:chapterId', catchErrors(async (req, res) => {
   // parse route parameters
   const { chapterId } = req.params;
 
@@ -52,15 +52,14 @@ router.get('/:chapterId', catchErrors(async (req, res, next) => {
   const chapters = await quran.chapters(chapterId);
 
   if (!chapters || !chapters.length) {
-    res.status(404);
-    next();
+    res.sendStatus(404);
   }
 
   // return the first chapter found that matches chapterId
   return res.json(convertToApiFormat(chapters[0]));
 }));
 
-router.get('/:chapterId/details', catchErrors(async (req, res, next) => {
+router.get('/:chapterId/details', catchErrors(async (req, res) => {
   // parse route parameters
   const { chapterId } = req.params;
 
@@ -83,8 +82,7 @@ router.get('/:chapterId/details', catchErrors(async (req, res, next) => {
   }
 
   // if we made it this far, 404
-  res.status(404);
-  return next();
+  res.sendStatus(404);
 }));
 
 export default router;

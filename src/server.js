@@ -16,6 +16,7 @@ import bodyParser from 'body-parser';
 import routes from './routes/index';
 import chapters from './routes/chapters';
 import juz from './routes/juz';
+import playHeads from './routes/playHeads';
 
 const debug = require('debug')('meezanapi:server');
 const server = express();
@@ -34,6 +35,7 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use('/', routes);
 server.use('/chapters', chapters);
 server.use('/juz', juz);
+server.use('/playHeads', playHeads);
 
 // Catch 404 and forward to error handler
 server.use(async (req, res, next) => {

@@ -91,6 +91,57 @@
           }
         }
       }
+    },
+    "/playHeads/{user_id}": {
+      "get": {
+        "description": "Gets play head state for a user.",
+        "operationId": "getPlayHead",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "x-example": 123,
+            "type": "string",
+            "description": "ID of the User"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User or playHead not found."
+          }
+        }
+      },
+      "put": {
+        "description": "Sets play head state for a user.",
+        "operationId": "setPlayHead",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "x-example": 123,
+            "type": "string",
+            "description": "ID of the User"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Play head object that needs to be set for this user.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayHeadMetadata"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found."
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -129,6 +180,10 @@
         "name",
         "type"
       ]
+    },
+    "PlayHeadMetadata": {
+      "title": "Metadata for single playhead response",
+      "type": "object"
     },
     "ChapterMetadataResponse": {
       "title": "Metadata for single chapter response",

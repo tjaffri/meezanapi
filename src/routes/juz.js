@@ -20,7 +20,7 @@ router.get('/', catchErrors(async (req, res) => {
   return res.json(juz);
 }));
 
-router.get('/:juzId', catchErrors(async (req, res, next) => {
+router.get('/:juzId', catchErrors(async (req, res) => {
   // parse route parameters
   const { juzId } = req.params;
 
@@ -33,8 +33,7 @@ router.get('/:juzId', catchErrors(async (req, res, next) => {
   }
 
   // if we made it this far, 404
-  res.status(404);
-  return next();
+  res.sendStatus(404);
 }));
 
 export default router;
