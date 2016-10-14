@@ -141,6 +141,26 @@
             "description": "User not found."
           }
         }
+      },
+      "delete": {
+        "description": "Deletes play head state for a user.",
+        "operationId": "deletePlayHead",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "x-is-map": false,
+            "x-example": 123,
+            "type": "string",
+            "description": "ID of the User"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found."
+          }
+        }
       }
     }
   },

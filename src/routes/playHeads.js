@@ -33,7 +33,20 @@ router.put('/:userId', catchErrors(async (req, res) => {
 
   // set the playHead state.
   db[userId] = req.body;
-  return res.json(req.body);
+  return res.json(db[userId]);
+}));
+
+router.delete('/:userId', catchErrors(async (req, res) => {
+  // parse route parameters.
+  const { userId } = req.params;
+
+  if (!db[userId]) {
+    return res.sendStatus(404);
+  }
+
+  // delete the playHead state if found.
+  delete db[userId];
+  return res.sendStatus(200);
 }));
 
 export default router;
