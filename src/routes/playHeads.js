@@ -13,6 +13,8 @@ import express from 'express';
 const router = new express.Router();
 const db = {};
 
+router.get('/', catchErrors(async (req, res) => res.json()));
+
 router.get('/:userId', catchErrors(async (req, res) => {
   // parse route parameters.
   const { userId } = req.params;
