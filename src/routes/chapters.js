@@ -11,7 +11,6 @@ import catchErrors from 'async-error-catcher';
 import express from 'express';
 import Quran from 'quran-promise';
 
-
 const router = new express.Router();
 
 // helper function to convert database objects to API response format

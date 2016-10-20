@@ -12,6 +12,7 @@ import path from 'path';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import routes from './routes/index';
 import chapters from './routes/chapters';
@@ -30,6 +31,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(cookieParser());
 server.use(express.static(path.join(__dirname, 'public')));
+server.use(cors());
 
 // Set up routes
 server.use('/', routes);
