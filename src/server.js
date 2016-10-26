@@ -13,7 +13,7 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import jwt from 'express-jwt';
+// import jwt from 'express-jwt';
 
 import indexView from './routes/index';
 import chaptersApi from './routes/chapters';
