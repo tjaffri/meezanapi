@@ -11,7 +11,7 @@ script:
 after_success:
   - npm run coveralls
   - npm prune --production
-  - source tools/env-production.sh
+  - source tools/env-development.sh
 deploy:
   provider: azure_web_apps
   skip_cleanup: true
