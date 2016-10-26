@@ -35,21 +35,21 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use(cors());
 
 // Auth setup (JWT) if not development
-if (server.get('env') !== 'development') {
-  const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
-  const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+// if (server.get('env') !== 'development') {
+//   const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+//   const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
 
-  if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
-    throw new Error('Auth0 Client ID or Client Secret ENV not set.');
-  }
+//   if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
+//     throw new Error('Auth0 Client ID or Client Secret ENV not set.');
+//   }
 
-  const jwtCheck = jwt({
-    secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
-    audience: AUTH0_CLIENT_ID,
-  });
+//   const jwtCheck = jwt({
+//     secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
+//     audience: AUTH0_CLIENT_ID,
+//   });
 
-  server.use(jwtCheck);
-}
+//   server.use(jwtCheck);
+// }
 
 // Set up routes
 server.use('/', indexView);
