@@ -13,11 +13,12 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import jwt from 'express-jwt';
 
-import routes from './routes/index';
-import chapters from './routes/chapters';
-import juz from './routes/juz';
-import playHeads from './routes/playHeads';
+import indexView from './routes/index';
+import chaptersApi from './routes/chapters';
+import juzApi from './routes/juz';
+import playHeadsApi from './routes/playHeads';
 
 const debug = require('debug')('meezanapi:server');
 const server = express();
@@ -33,11 +34,28 @@ server.use(cookieParser());
 server.use(express.static(path.join(__dirname, 'public')));
 server.use(cors());
 
+// Auth setup (JWT) if not development
+if (server.get('env') !== 'development') {
+  const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+  const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+
+  if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
+    throw new Error('Auth0 Client ID or Client Secret ENV not set.');
+  }
+
+  const jwtCheck = jwt({
+    secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
+    audience: AUTH0_CLIENT_ID,
+  });
+
+  server.use(jwtCheck).unless({ path: ['/'] });
+}
+
 // Set up routes
-server.use('/', routes);
-server.use('/chapters', chapters);
-server.use('/juz', juz);
-server.use('/playHeads', playHeads);
+server.use('/', indexView);
+server.use('/chapters', chaptersApi);
+server.use('/juz', juzApi);
+server.use('/playHeads', playHeadsApi);
 
 // Catch 404 and forward to error handler
 server.use(async (req, res, next) => {
