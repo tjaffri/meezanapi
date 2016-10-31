@@ -13,8 +13,10 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-// import jwt from 'express-jwt';
+import jwt from 'express-jwt';
+import rsaValidation from 'auth0-api-jwt-rsa-validation';
 
+import config from './config.json';
 import indexView from './routes/index';
 import chaptersApi from './routes/chapters';
 import juzApi from './routes/juz';
@@ -35,21 +37,31 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use(cors());
 
 // Auth setup (JWT) if not development
-// if (server.get('env') !== 'development') {
-//   const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
-//   const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+if (process.env.NODE_ENV !== 'development') {
+  // debug('Enabling JSON Web Token Auth');
+  // const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+  // const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
 
-//   if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
-//     throw new Error('Auth0 Client ID or Client Secret ENV not set.');
-//   }
+  // if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
+  //   throw new Error('Auth0 Client ID or Client Secret ENV not set.');
+  // }
 
-//   const jwtCheck = jwt({
-//     secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
-//     audience: AUTH0_CLIENT_ID,
-//   });
+  // const jwtCheck = jwt({
+  //   secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
+  //   audience: AUTH0_CLIENT_ID,
+  // });
 
-//   server.use(jwtCheck);
-// }
+  debug('Enabling OAuth 2');
+  const oAuthCheck = jwt({
+    secret: rsaValidation(),
+    algorithms: ['RS256'],
+    issuer: config.auth0_issuer,
+    audience: config.auth0_audience,
+  });
+
+  // server.use('/jwt', jwtCheck);
+  server.use(oAuthCheck);
+}
 
 // Set up routes
 server.use('/', indexView);
@@ -65,7 +77,7 @@ server.use(async (req, res, next) => {
 });
 
 // Error handlers and logging.
-if (server.get('env') === 'development') {
+if (process.env.NODE_ENV === 'development') {
   // Dev logging is verbose, with color coding.
   debug('Enabling dev logging');
   server.use(logger('dev'));

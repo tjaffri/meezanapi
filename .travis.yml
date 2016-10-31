@@ -7,6 +7,7 @@ install:
 script:
   - npm run lint
   - npm run build:release
+  - source tools/env-development.sh
   - npm run test:cover
 after_success:
   - npm run coveralls

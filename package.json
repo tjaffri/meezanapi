@@ -51,6 +51,7 @@
   "dependencies": {
     "app-root-dir": "^1.0.2",
     "async-error-catcher": "^1.0.1",
+    "auth0-api-jwt-rsa-validation": "0.0.1",
     "babel-runtime": "^6.6.1",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
