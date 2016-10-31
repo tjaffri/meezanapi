@@ -8,11 +8,11 @@ describe('Chapters', () => {
   const serverInstance = server.listen(config.port + 1);
 
   // Test Get Chapter Metadata by Id endpoint
-  describe('GET /chapters/:chapterId', async () => {
+  describe('GET /v1/chapters/:chapterId', async () => {
     it('should return metadata about a chapter', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/1')
+        .get('/v1/chapters/1')
         .send();
 
       try {
@@ -34,7 +34,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are out of range', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/5000')
+        .get('/v1/chapters/5000')
         .send();
 
       try {
@@ -50,7 +50,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are not found', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/0')
+        .get('/v1/chapters/0')
         .send();
 
       try {
@@ -66,7 +66,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are not numbers', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/;drop table chapter;')
+        .get('/v1/chapters/;drop table chapter;')
         .send();
 
       try {
@@ -81,11 +81,11 @@ describe('Chapters', () => {
   });
 
   // Test Get Chapter Details by Id endpoint
-  describe('GET /chapters/:chapterId/details', async () => {
+  describe('GET /v1/chapters/:chapterId/details', async () => {
     it('should return details about a chapter', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/1/details')
+        .get('/v1/chapters/1/details')
         .send();
 
       try {
@@ -116,7 +116,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are out of range', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/5000/details')
+        .get('/v1/chapters/5000/details')
         .send();
 
       try {
@@ -132,7 +132,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are not found', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/0/details')
+        .get('/v1/chapters/0/details')
         .send();
 
       try {
@@ -148,7 +148,7 @@ describe('Chapters', () => {
     it('should reject chapter ids that are not numbers', async () => {
 
       const response = await request(serverInstance)
-        .get('/chapters/;drop table chapter;/details')
+        .get('/v1/chapters/;drop table chapter;/details')
         .send();
 
       try {
@@ -166,7 +166,7 @@ describe('Chapters', () => {
   it('should return info about all chapters', async () => {
 
     const response = await request(serverInstance)
-      .get('/chapters')
+      .get('/v1/chapters')
       .send();
 
     try {

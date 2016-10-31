@@ -8,12 +8,12 @@ describe('PlayHeads', () => {
   const serverInstance = server.listen(config.port + 3);
 
   // Test Get Set/Get PlayHeads endpoint
-  describe('GET /playHeads/:userId', async () => {
+  describe('GET /v1/playHeads/:userId', async () => {
     it('should return a playHead that is set', async () => {
 
       // Set a test value.
       const putResponse = await request(serverInstance)
-        .put('/playHeads/123')
+        .put('/v1/playHeads/123')
         .send({ test: 456 });
 
       try {
@@ -28,7 +28,7 @@ describe('PlayHeads', () => {
 
         // Get the test value back
         const getResponse = await request(serverInstance)
-          .get('/playHeads/123')
+          .get('/v1/playHeads/123')
           .send();
 
         try {

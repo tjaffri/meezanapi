@@ -22,7 +22,7 @@
     "application/json; charset=utf-8"
   ],
   "paths": {
-    "/chapters": {
+    "/v1/chapters": {
       "get": {
         "description": "Gets metadata for all chapters.",
         "operationId": "getChapters",
@@ -40,7 +40,7 @@
         }
       }
     },
-    "/chapters/{chapter_id}": {
+    "/v1/chapters/{chapter_id}": {
       "get": {
         "description": "Gets metadata for a single chapter.",
         "operationId": "getChapter",
@@ -66,7 +66,7 @@
         }
       }
     },
-    "/chapters/{chapter_id}/details": {
+    "/v1/chapters/{chapter_id}/details": {
       "get": {
         "description": "Gets metadata and details for a single chapter.",
         "operationId": "getChapterDetails",
@@ -92,7 +92,7 @@
         }
       }
     },
-    "/playHeads/{user_id}": {
+    "/v1/playHeads/{user_id}": {
       "get": {
         "description": "Gets play head state for a user.",
         "operationId": "getPlayHead",

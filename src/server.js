@@ -38,18 +38,18 @@ server.use(cors());
 
 // Auth setup (JWT) if not development
 if (process.env.NODE_ENV !== 'development') {
-  // debug('Enabling JSON Web Token Auth');
-  // const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
-  // const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
+  debug('Enabling JSON Web Token Auth');
+  const AUTH0_CLIENT_ID = process.env.AUTH0_CLIENT_ID;
+  const AUTH0_CLIENT_SECRET = process.env.AUTH0_CLIENT_SECRET;
 
-  // if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
-  //   throw new Error('Auth0 Client ID or Client Secret ENV not set.');
-  // }
+  if (!AUTH0_CLIENT_ID || !AUTH0_CLIENT_SECRET) {
+    throw new Error('Auth0 Client ID or Client Secret ENV not set.');
+  }
 
-  // const jwtCheck = jwt({
-  //   secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
-  //   audience: AUTH0_CLIENT_ID,
-  // });
+  const jwtCheck = jwt({
+    secret: new Buffer(AUTH0_CLIENT_SECRET, 'base64'),
+    audience: AUTH0_CLIENT_ID,
+  });
 
   debug('Enabling OAuth 2');
   const oAuthCheck = jwt({
@@ -59,15 +59,21 @@ if (process.env.NODE_ENV !== 'development') {
     audience: config.auth0_audience,
   });
 
-  // server.use('/jwt', jwtCheck);
-  server.use(oAuthCheck);
+  server.use('/v1', jwtCheck);
+  server.use('/v1/oauth', oAuthCheck);
 }
 
-// Set up routes
 server.use('/', indexView);
-server.use('/chapters', chaptersApi);
-server.use('/juz', juzApi);
-server.use('/playHeads', playHeadsApi);
+
+// Set up routes with jwt auth
+server.use('/v1/chapters', chaptersApi);
+server.use('/v1/juz', juzApi);
+server.use('/v1/playHeads', playHeadsApi);
+
+// Set up routes with OAuth2 auth
+server.use('/v1/oauth/chapters', chaptersApi);
+server.use('/v1/oauth/juz', juzApi);
+server.use('/v1/oauth/playHeads', playHeadsApi);
 
 // Catch 404 and forward to error handler
 server.use(async (req, res, next) => {
