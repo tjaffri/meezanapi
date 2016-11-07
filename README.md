@@ -71,6 +71,13 @@ the `swagger/swagger.json` spec checked into this repo.
 This file has to be kept in sync with the implementation, otherwise you will get build failures in the CI build (which
 verifies that the implementation matches the spec.
 
+## Authorization
+
+The API is structured with two different routes, each accepting a different type of authorization:
+
+1. /v1/jwt: Requires the Authorization header to contain a JWT token, (e.g. received in a native app via the auth0 lock component)
+2. /v1/oauth: Requires the Authorization header to contain an OAuth2 bearer token (e.g. received in an Alexa skill via the OAuth2 protocol)
+
 ## Architecture
 
 This codebase uses ES7 async/await JavaScript (transpiled via Babel), and http://expressjs.com as the web server.

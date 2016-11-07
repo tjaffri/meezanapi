@@ -59,7 +59,7 @@ if (process.env.NODE_ENV !== 'development') {
     audience: config.auth0_audience,
   });
 
-  server.use('/v1', jwtCheck);
+  server.use('/v1/jwt', jwtCheck);
   server.use('/v1/oauth', oAuthCheck);
 }
 
