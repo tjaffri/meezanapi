@@ -8,11 +8,11 @@ describe('Juz', () => {
   const serverInstance = server.listen(config.port + 2);
 
   // Test Get Juz by Id endpoint
-  describe('GET /v1/juz/:juzId', async () => {
+  describe('GET /v1/jwt/juz/:juzId', async () => {
     it('should return info about a juz', async () => {
 
       const response = await request(serverInstance)
-        .get('/v1/juz/28')
+        .get('/v1/jwt/juz/28')
         .send();
 
       try {
@@ -35,7 +35,7 @@ describe('Juz', () => {
     it('should reject juz ids that are out of range', async () => {
 
       const response = await request(serverInstance)
-        .get('/v1/juz/5000')
+        .get('/v1/jwt/juz/5000')
         .send();
 
       try {
@@ -51,7 +51,7 @@ describe('Juz', () => {
     it('should reject juz ids that are not found', async () => {
 
       const response = await request(serverInstance)
-        .get('/v1/juz/0')
+        .get('/v1/jwt/juz/0')
         .send();
 
       try {
@@ -67,7 +67,7 @@ describe('Juz', () => {
     it('should reject juz ids that are not numbers', async () => {
 
       const response = await request(serverInstance)
-        .get('/v1/juz/;drop table juz;')
+        .get('/v1/jwt/juz/;drop table juz;')
         .send();
 
       try {
@@ -85,7 +85,7 @@ describe('Juz', () => {
   it('should return info about all juz', async () => {
 
     const response = await request(serverInstance)
-      .get('/v1/juz')
+      .get('/v1/jwt/juz')
       .send();
 
     try {

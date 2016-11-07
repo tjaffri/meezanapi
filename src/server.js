@@ -66,9 +66,9 @@ if (process.env.NODE_ENV !== 'development') {
 server.use('/', indexView);
 
 // Set up routes with jwt auth
-server.use('/v1/chapters', chaptersApi);
-server.use('/v1/juz', juzApi);
-server.use('/v1/playHeads', playHeadsApi);
+server.use('/v1/jwt/chapters', chaptersApi);
+server.use('/v1/jwt/juz', juzApi);
+server.use('/v1/jwt/playHeads', playHeadsApi);
 
 // Set up routes with OAuth2 auth
 server.use('/v1/oauth/chapters', chaptersApi);
