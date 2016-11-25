@@ -99,4 +99,4 @@ The underlying ES2016 based `quran-promise` node module is also available at: ht
 
 ### License
 
-MIT © 2016 Axis, the Information Professionals.
+MIT © 2016
